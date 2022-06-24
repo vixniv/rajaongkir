@@ -12,11 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send(
+    "Thank you for using this app, docs: https://github.com/vixniv/rajaongkir"
+  );
 });
 
 app.all("*", (req, res) => {
-  res.send("404 Not Found");
+  res.send("404 not found - available routes /province, /city, /cost");
 });
 
 app.use((err, req, res, next) => {
