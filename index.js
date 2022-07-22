@@ -22,6 +22,13 @@ app.all("*", (req, res) => {
 });
 
 app.use((err, req, res, next) => {
+  if (err.response.data.rajaongkir.status.code === 400) {
+    return res.status(400).json({
+      status: "400",
+      message: err.response.data.rajaongkir.status.description,
+    });
+  }
+
   res.status(500).json({
     status: "500",
     message: err.message,
